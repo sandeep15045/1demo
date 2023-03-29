@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 
 import ProductDate from './ProductDate';
 import Card from './Card';
 import './ProductItem.css';
 
 const ProductItem = (props) => {
+
+  const [title, setTitle]= useState(props.title);
+
+  function clickHandler(){
+    setTitle("pop");
+    console.log("button clicked");
+  }
+
   return (
     <Card className='product-item'>
-      <ProductDate date={props.date} />
+      <ProductDate date={props.date}/>
       <div className='product-item__description'>
-        <h2>{props.title} </h2>
+        <h2>{title}</h2>
       </div>
+      <button onClick={clickHandler}>Add Cart</button>
     </Card>
   );
 }
